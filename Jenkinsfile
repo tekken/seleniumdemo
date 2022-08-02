@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..3'
+                echo 'Building my selenium maven tasks'
             }
         }
         stage('Test') {
