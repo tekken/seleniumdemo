@@ -1,10 +1,13 @@
 pipeline {
     agent any
-    properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', name: 'myparam', defaultValue: 'default value']]]])
+    parameters {
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo "received ${binding.hasVariable('myparam') ? myparam : 'undefined'}"
                 echo 'Building my selenium maven tasks'
             }
         }
